@@ -15,7 +15,6 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/masterlist">Master List</Link>
             </li>
             {
-                <>      
                 (localStorage.getItem("td_user") !== null) ?
                     <div className="navbar__item">
                         <Link className="navbar__item"
@@ -23,8 +22,9 @@ export const NavBar = (props) => {
                             onClick={() => {
                                 localStorage.removeItem("fc_user")
                             }}
-                        >Logout</Link>
+                            >Logout</Link>
                     </div> :
+                            <>      
                         {/* <li className="nav-item">
                             <Link className="navbar__item"to="/login">Login</Link>
                         </li>
