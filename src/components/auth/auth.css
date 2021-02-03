@@ -38,3 +38,11 @@
     letter-spacing: 2px;
     font-weight: 700;
 }
+
+.container--register {
+    color: black;
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 7rem;
+}
