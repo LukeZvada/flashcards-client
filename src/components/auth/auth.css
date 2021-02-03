@@ -1,0 +1,6 @@
+.container--login {
+    display: flex;
+    justify-content: center;
+    color: black;
+    border: none;
+}

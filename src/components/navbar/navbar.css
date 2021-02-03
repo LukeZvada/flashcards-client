@@ -4,6 +4,8 @@
     justify-content: space-evenly;
     text-decoration: none;
     list-style-type: none;
+    margin-left: 8rem;
+    margin-right: 10rem;
 }
 
 .navbar__link {
