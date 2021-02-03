@@ -1,3 +1,8 @@
+/*  .01 - Login
+    .02 - Register  */
+
+
+/* .01 - Login */
 .container--login {
     color: black;
     border: none;
@@ -39,10 +44,37 @@
     font-weight: 700;
 }
 
+
+
+/* ------------------------------------------- 
+    .02 - register
+*/
 .container--register {
     color: black;
     border: none;
     display: flex;
     justify-content: center;
     margin-top: 7rem;
+}
+
+.register--field { 
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 0;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.register--button {
+    height: 35px !important;
+    width: 358px;
+    background-color: #04C35C;
+    color: white;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
 }
