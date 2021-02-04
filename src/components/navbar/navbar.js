@@ -10,7 +10,7 @@ export const NavBar = (props) => {
         getCurrentUser()
     },[])
 
-    return (
+    return ( //show everything for staff, only Logout for non-staff
         <>
             {currentUser.is_staff ?
                 <ul className="navbar">

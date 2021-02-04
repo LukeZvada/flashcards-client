@@ -16,6 +16,7 @@ export const UserProvider = (props) => {
             .then(setCurrentUser)
     }
 
+    //flips is_staff to the opposite of what it currently is
     const flipAdmin = (id) => {
         return fetch(`http://localhost:8000/user/${id}/flip_is_staff`, {
             headers: {
