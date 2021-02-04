@@ -23,15 +23,7 @@ export const NavBar = (props) => {
                                 localStorage.removeItem("fc_user")
                             }}
                             >Logout</Link>
-                    </div> :
-                            <>      
-                        {/* <li className="nav-item">
-                            <Link className="navbar__item"to="/login">Login</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="navbar__item"to="/register">Register</Link>
-                        </li> */}
-                    </>
+                    </div> : "" 
             }
         </ul>
     )
