@@ -1,14 +1,18 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import "./navbar.css"
 
 export const NavBar = (props) => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Home</Link>
+                <Link className="navbar__link" to="/categorymanager">Category Manager</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/add">Add</Link>
+                <Link className="navbar__link" to="/addquestion">Add Question</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/masterlist">Master List</Link>
             </li>
             {
                 (localStorage.getItem("td_user") !== null) ?
@@ -18,15 +22,15 @@ export const NavBar = (props) => {
                             onClick={() => {
                                 localStorage.removeItem("fc_user")
                             }}
-                        >Logout</Link>
+                            >Logout</Link>
                     </div> :
-                    <>
-                        <li className="nav-item">
+                            <>      
+                        {/* <li className="nav-item">
                             <Link className="navbar__item"to="/login">Login</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="navbar__item"to="/register">Register</Link>
-                        </li>
+                        </li> */}
                     </>
             }
         </ul>

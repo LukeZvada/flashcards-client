@@ -1,0 +1,36 @@
+.navbar { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-decoration: none;
+    list-style-type: none;
+    margin-left: 8rem;
+    margin-right: 10rem;
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Future animation for navbar  */
+/* .navbar:before {
+    content: "";
+    position: absolute;
+    width: 25%;
+    height: 2px;
+    bottom: 30;
+    left: 0;
+    background-color: black;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+    margin-bottom: 25rem;
+
+} */
