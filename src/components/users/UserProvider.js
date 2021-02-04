@@ -6,9 +6,9 @@ export const UserProvider = (props) => {
 
 
     const getCurrentUser = () => {
-        return fetch(`http://localhost:8000/currentuser`, {
+        return fetch(`http://localhost:8000/user`, {
             headers: {
-                Authorization: `Token ${localStorage.getItem("rare_user_id")}`,
+                Authorization: `Token ${localStorage.getItem("fc_user")}`,
                 "Content-Type": "application/json",
             }
         })
@@ -16,10 +16,19 @@ export const UserProvider = (props) => {
             .then(setCurrentUser)
     }
 
+    const flipAdmin = (id) => {
+        return fetch(`http://localhost:8000/user/${id}/flip_is_staff`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("fc_user")}`,
+                "Content-Type": "application/json",
+            }
+        })
+    }
+
 
     return (
             <UserContext.Provider value={{
-                 getCurrentUser, currentUser
+                 getCurrentUser, currentUser, flipAdmin
             }}>
                 {props.children}
             </UserContext.Provider>
