@@ -27,3 +27,19 @@
     height: 2em;
     width: 40em;
 }
+
+.btn-small{
+    background-color: white;
+    color: black;
+    cursor:pointer;
+    padding: 5px;
+    font-size: 25px;
+    border: black solid 1px;
+    border-radius: 6px;
+    margin: 5px;
+  }
+
+  .btn-small:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+  }
