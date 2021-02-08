@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Tienne&display=swap');
+
+.ml-top-cont{
+    display: flex;
+    justify-content: center;
+    margin-top:5%;
+    margin-bottom: 2%;
+}
+
+.ml-title{
+    font-family: 'Tienne', serif;
+    font-size: 34px;
+    line-height: 46px;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.question{
+    display: flex;
+    justify-content: center;
+}
