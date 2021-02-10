@@ -4,7 +4,7 @@ export const CategoryContext = React.createContext()
 
 export const CategoryProvider = (props) => {
     const [categories, setCategories] = useState([])
-    const [category, setCategory] = useState({})
+   
 
     const getAllCategories = () => {
         return fetch("http://localhost:8000/categories", {
@@ -13,6 +13,9 @@ export const CategoryProvider = (props) => {
             }
         })
         .then(res => res.json())
+        .then(sortByApprovalStatus => {
+            return sortByApprovalStatus.sort(a => a.approved ? 1 : -1)
+        })
         .then(setCategories)
     }
 
@@ -23,7 +26,7 @@ export const CategoryProvider = (props) => {
             }
         })
         .then(res => res.json())
-        .then(setCategory)
+        
     }
 
     const addCategory = (newCategory) => {
@@ -38,13 +41,46 @@ export const CategoryProvider = (props) => {
         .then(getAllCategories)
     }
 
+    const deleteCategory = (catObj) => {
+        return fetch(`http://localhost:8000/categories/${catObj.id}`, {
+            method : "DELETE",
+            headers : {
+                "Authorization": `Token ${localStorage.getItem("fc_user")}`
+            }
+        }).then(getAllCategories)
+    }
+
+    const updateCategory = (catObj) => {
+        return fetch(`http://localhost:8000/categories/${catObj.id}`, {
+            method : 'PUT',
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("fc_user")}`
+            },
+            body : JSON.stringify(catObj)
+        })
+    }
+
+    const categoryApprovalStatus = (catId, approvalStatus) => {
+        return fetch(`http://localhost:8000/categories/${catId}/approve`, {
+            method : "PATCH",
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("fc_user")}`
+            },
+            body : JSON.stringify({approved : approvalStatus})
+        }).then(getAllCategories)
+    }
+ 
     return (
         <CategoryContext.Provider value={{
             categories,
             getAllCategories,
-            category,
+            deleteCategory,
             getSingleCategory,
-            addCategory
+            addCategory,
+            updateCategory,
+            categoryApprovalStatus
         }}>
             {props.children}
         </CategoryContext.Provider>
