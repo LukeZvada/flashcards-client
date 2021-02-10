@@ -33,4 +33,3 @@ export const QuestionProvider = (props) => {
     )
 }
 
-export default PostsProvider
