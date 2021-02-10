@@ -7,7 +7,7 @@ export const QuestionProvider = (props) => {
     const [singleQuestion, setSingleQuestion] = useState([])
 
     const getAllQuestions = () => {
-        return fetch(`http://localhost:8000/#`, {
+        return fetch(`http://localhost:8000/questions`, {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("fc_user")}`
             }})

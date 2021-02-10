@@ -1,21 +1,26 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { QuestionContext } from './QuestionProvider';
 
 export const QuestionCard = () => {
     const { questions, getAllQuestions } = useContext(QuestionContext)
-    const [question, setQuestion] = useState({})
-    const [answer, setAnswer] = useState(false);
-    const showAnswer = () => setAnswer(true);
+    const [question, setQuestion] = useState({}) //set the state of the randomly generated question
+    const [answer, setAnswer] = useState(false); //determines whether to render anwer or question, and logical buttons
+    const showAnswer = () => setAnswer(true); //function to toggle between rendering the answer or not
 
 
     useEffect(() => {
         getAllQuestions()
-        const randomQuestion = questions[Math.floor(Math.random() * questions.length)]
-        setQuestion(randomQuestion)
+        .then(() => {
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)]
+            setQuestion(randomQuestion)
+        })
+        
     }, [])
 
+    //when the user clicks Skip, generate a new random question
     const nextQuestion = () => {
         const nextQuestion = questions[Math.floor(Math.random() * questions.length)]
+        setAnswer(false)
         setQuestion(nextQuestion)
 
     }
@@ -23,8 +28,8 @@ export const QuestionCard = () => {
     return (
         <>
 
+            {answer ?
 
-            {setAnswer ?
                 <section className="question">
                     <h3 className="question__answer">{question.answer_value}</h3>
                 </section>
@@ -35,13 +40,21 @@ export const QuestionCard = () => {
             }
 
 
+            {answer ? "" :
+                <button onClick={showAnswer}>
+                    Answer
+                </button>
+            }
 
-            <button onClick={showAnswer}>
-                Answer
-            </button>
-            <button onClick={nextQuestion}>
-                Skip
-            </button>
+            {answer ?
+                <button onClick={nextQuestion}>
+                    Next
+                </button>
+                :
+                <button onClick={nextQuestion}>
+                    Skip
+                </button>
+            }
         </>
 
     )
