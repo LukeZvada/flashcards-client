@@ -9,12 +9,12 @@ export const QuestionCard = () => {
 
 
     useEffect(() => {
+        console.log("test")
         getAllQuestions()
-        .then(() => {
-            const randomQuestion = questions[Math.floor(Math.random() * questions.length)]
-            setQuestion(randomQuestion)
-        })
-        
+        const randomQuestion = questions[Math.floor(Math.random() * questions.length)]
+        setQuestion(randomQuestion)
+
+
     }, [])
 
     //when the user clicks Skip, generate a new random question
@@ -27,34 +27,39 @@ export const QuestionCard = () => {
 
     return (
         <>
-
-            {answer ?
-
-                <section className="question">
-                    <h3 className="question__answer">{question.answer_value}</h3>
-                </section>
-                :
-                <section className="question">
-                    <h3 className="question__text">{question.question_text}</h3>
-                </section>
-            }
+            <section className="flashcard">
 
 
-            {answer ? "" :
-                <button onClick={showAnswer}>
-                    Answer
+
+                {answer ?
+
+                    <section className="question">
+                        <h3 className="question__answer">{question.answer_value}</h3>
+                    </section>
+                    :
+                    <section className="question">
+                        <h3 className="question__text">{question.question_text}</h3>
+                    </section>
+                }
+
+
+                {answer ? "" :
+                    <button className="button" onClick={showAnswer}>
+                        Answer
                 </button>
-            }
+                }
 
-            {answer ?
-                <button onClick={nextQuestion}>
-                    Next
+                {answer ?
+                    <button className="button" onClick={nextQuestion}>
+                        Next
                 </button>
-                :
-                <button onClick={nextQuestion}>
-                    Skip
+                    :
+                    <button className="button" onClick={nextQuestion}>
+                        Skip
                 </button>
-            }
+                }
+
+            </section>
         </>
 
     )

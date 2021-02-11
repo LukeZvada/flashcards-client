@@ -1,4 +1,11 @@
-.question_card {
+.flashcard {
     display: flex;
     justify-content: center;
+}
+
+
+.button {
+    align-self: flex-end;
+    border-radius: 10px;
+    margin: 10px;
 }
