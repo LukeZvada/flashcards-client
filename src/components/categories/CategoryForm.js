@@ -50,8 +50,8 @@ export const CategoryForm = (props) => {
                 </div>
             </fieldset>
             <button type="submit"
-                onClick={() => {
-                   
+                onClick={(e) => {
+                   e.preventDefault()
                     makeNewCategory()
                 }}
                 className="btn btn-warning btn-form">
