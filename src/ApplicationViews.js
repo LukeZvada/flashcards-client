@@ -1,11 +1,17 @@
 import React from "react"
-import { Route, Redirect } from "react-router-dom"
+import { Route} from "react-router-dom"
 
+import {CategoryProvider} from "./components/categories/CategoryProvider"
+import {CategoryList} from "./components/categories/CategoryList"
+import { CategoryForm } from "./components/categories/CategoryForm"
 
-
-export const ApplicationViews = () => {
+export const ApplicationViews = (props) => {
     return <>
-
+        <CategoryProvider>
+            <Route exact path="/categorymanager"> <CategoryList {...props} /> </Route>
+            <Route exact path="/categorymanager/create" render={props => {return <CategoryForm {...props} /> }} />
+            <Route exact path="/categorymanager/edit/:categoryId(\d+)" render={props => <CategoryForm {...props} /> } />
+        </CategoryProvider>
 
 
         <Route path="/logout" render={
